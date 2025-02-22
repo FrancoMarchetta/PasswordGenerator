@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import "./css/PasswordGenerator.css"
-
+import copyIcon from "../assets/copy.png"
 function PasswordGenerator() {
 
   const lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -8,6 +8,7 @@ function PasswordGenerator() {
   const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   const symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+"];
 
+  const inputRef:any = useRef("");
 
   const allCharacters = lowercaseLetters.concat(uppercaseLetters, numbers, symbols); //concatena los 3 arrays en uno solo
 
@@ -25,6 +26,11 @@ function PasswordGenerator() {
     console.log(newPassword);
   }
 
+  function copyToClipboard(){
+    navigator.clipboard.writeText(inputRef.current.value);
+    alert("copied to clipboard")
+  }
+
   return (
     <>
     <main className='container'>
@@ -32,9 +38,13 @@ function PasswordGenerator() {
 
       <div>
         <h1 className='cursor typewriter-animation' color='rgb(4, 255, 0)'> Password Generator</h1>
-      </div>  
-      
-      <input value={newPassword} type="text" placeholder='Generated Password' name="" id="" />
+      </div>
+       
+      <div className='input-and-copy-btn'>
+        <input ref={inputRef} value={newPassword} type="text" placeholder='Generated Password' name="" id="" />
+        <button onClick={copyToClipboard}><img id='copyIcon' src={copyIcon} alt="copy" /> </button>
+      </div>
+
       <button onClick={createPassword}>Generate new Password</button>
 
       <div>
