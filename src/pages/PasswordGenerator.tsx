@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import  { useRef, useState } from 'react'
 import "./css/PasswordGenerator.css"
 import copyIcon from "../assets/copy.png"
 function PasswordGenerator() {
