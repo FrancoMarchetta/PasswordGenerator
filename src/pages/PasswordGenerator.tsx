@@ -53,7 +53,9 @@ function PasswordGenerator() {
      
 
       <div>
+        <a href="https://github.com/FrancoMarchetta" target='blank'>
         <button id='github-btn'>gitHub</button>
+        </a>
       </div>
 
       </div>
